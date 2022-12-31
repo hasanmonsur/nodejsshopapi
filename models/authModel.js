@@ -58,11 +58,16 @@ const authSchema = new mongoose.Schema(
 );
 
 authSchema.pre("save", async function (next) {
-    const user = this;
-    //console.log(user);
+    const user = this;   
+   try{
+        if (user.isModified("password")) {
+            user.password = await bcrypt.hash(user.password, 8);
+        }
 
-    if (user.isModified("password")) {
-        user.password = await bcrypt.hash(user.password, 8);
+        console.log(user);
+    }
+    catch{
+        console.log(user);
     }
 
     next();
@@ -118,6 +123,9 @@ authSchema.methods.toJSON = function () {
     return userObj;
 };
 
-const Auth = mongoose.model("Auth", authSchema);
+
+//console.log(authSchema);
+
+const Auth = mongoose.model("auth", authSchema);
 
 module.exports = Auth;

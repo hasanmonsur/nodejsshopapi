@@ -43,13 +43,16 @@ router.post('/create', async function (req, res) {
 
     try {
         const auth = new AuthModel(req.body);
-        const token = await auth.generateAuthToken();
+        //console.log("auth "+auth);
+        const token = await auth.funcGenerateAuthToken();
+        //console.log("token "+token);
         await auth.save();
 
         res.send({ user: auth, token });
 
     } catch (e) {
         res.status(500).send(e)
+        
     }
 
 });
