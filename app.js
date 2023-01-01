@@ -18,7 +18,7 @@ const products = require('./routes/productsRouter');
 
 const app = express();
 
-console.log('Start Success');
+//console.log('Start Success');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -74,5 +74,5 @@ app.set('port', process.env.PORT || 3000);
 
 var server = app.listen(app.get('port'), function () {
     //debug('Express server listening on port ' + server.address().port);
-    console.log('Express server listening on port ' + server.address().port);
+    console.log('Start Success port ' + server.address().port);
 });
