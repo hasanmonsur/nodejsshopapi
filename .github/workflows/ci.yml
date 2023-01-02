@@ -30,7 +30,7 @@ jobs:
     - run: npm run build --if-present
     #- run: npm start
     - name: Docker Build Docker Push
-      uses: mr-smithers-excellent/docker-build-push@v4
+      uses: mr-smithers-excellent/docker-build-push@v5
       with:
         image: hasanmonsur/shopapi
         registry: docker.io
